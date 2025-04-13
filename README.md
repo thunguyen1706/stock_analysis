@@ -17,6 +17,8 @@ Gemini Stock Analysis Assistant is an interactive Streamlit web app that combine
 ## 🚀 How to Run
 
 ```bash
+python -m venv venv
+venv/Scripts/activate
 pip install -r requirements.txt
-streamlit run fincrack_v1.py
-
+python fincrack_api.py
+streamlit run fincrack_frontend.py
