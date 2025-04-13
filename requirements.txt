@@ -3,3 +3,8 @@ matplotlib
 streamlit
 yfinance
 google-generativeai
+fastapi
+uvicorn
+pydantic
+Pillow
+requests
