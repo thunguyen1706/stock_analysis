@@ -6,9 +6,18 @@ import streamlit as st
 import yfinance as yf
 import google.generativeai as genai
 import re 
-# Load ticker mappings from JSON
-with open(r"D:\hackabull\ticker.json", "r") as f:
-    company_data = json.load(f)
+
+# Assuming ticker.json is in the same directory as the script
+ticker_file_path = 'ticker.json' 
+try:
+    with open(ticker_file_path, "r") as f:
+        company_data = json.load(f)
+except FileNotFoundError:
+    st.error(f"Error: The file {ticker_file_path} was not found. Please make sure it exists in the same directory as the script.")
+    st.stop() # Stop execution if the file is not found
+except json.JSONDecodeError:
+    st.error(f"Error: Could not decode JSON from the file {ticker_file_path}. Please ensure it is valid JSON.")
+    st.stop() # Stop execution if JSON is invalid
 
 def normalize_title(name):
     name = name.lower()
