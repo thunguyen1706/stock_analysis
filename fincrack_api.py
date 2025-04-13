@@ -6,6 +6,7 @@ import yfinance as yf
 import re
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.responses import FileResponse
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Dict, List, Optional, Any
 import uvicorn
@@ -18,6 +19,20 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = FastAPI(title="FinCrack API", description="Financial analysis API for stock data")
+
+# Configure CORS
+allowed_origins = [
+    os.getenv("BACKEND_URL_DEV", "http://localhost:3000"),
+    os.getenv("BACKEND_URL_PROD", "https://fincrack.vercel.app")
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=allowed_origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Setup Gemini
 def setup_gemini():
