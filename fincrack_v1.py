@@ -35,7 +35,7 @@ for item in company_data.values():
     name_to_ticker[ticker] = ticker
 
 # Setup Gemini
-genai.configure(api_key="AIzaSyA7YdCpR_0AIerXm7L0p-lte9YRTNcSz10")
+genai.configure(api_key="your_gemini_api_key")
 model = genai.GenerativeModel("gemini-2.0-flash")
 
 # Helper to find ticker by company name
